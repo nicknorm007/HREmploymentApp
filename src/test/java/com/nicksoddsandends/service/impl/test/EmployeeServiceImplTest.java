@@ -40,7 +40,6 @@ public class EmployeeServiceImplTest {
 		Long key = employeeService.createEmployee(emp);
 		Employee newEmp = employeeService.getEmployee(key);
 		
-		
 		assertEquals(key.longValue(), newEmp.getId());   
 	}
 	
