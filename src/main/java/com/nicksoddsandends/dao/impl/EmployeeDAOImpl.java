@@ -39,7 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void deleteEmployee(long id) {
         Employee employee = new Employee();
-        employee.setId(id);
+        employee.setEmp_id(id);
         hibernateUtil.delete(employee);
     }
     
@@ -65,7 +65,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             int age = (int) employeeObject[1];
             String name = (String) employeeObject[2];
             float salary = (float) employeeObject[3];
-            employee.setId(id);
+            employee.setEmp_id(id);
             employee.setName(name);
             employee.setAge(age);
             employee.setSalary(salary);
