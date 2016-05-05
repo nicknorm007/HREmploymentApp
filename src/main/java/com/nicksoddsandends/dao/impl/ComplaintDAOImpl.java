@@ -1,12 +1,14 @@
 package com.nicksoddsandends.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.nicksoddsandends.dao.ComplaintDAO;
 import com.nicksoddsandends.entity.Complaint;
 import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.util.HibernateUtil;
 
+@Repository
 public class ComplaintDAOImpl implements ComplaintDAO {
 
 	public ComplaintDAOImpl() {

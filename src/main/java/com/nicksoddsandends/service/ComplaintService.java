@@ -1,5 +1,10 @@
 package com.nicksoddsandends.service;
 
-public class ComplaintService {
+import java.util.List;
 
+import com.nicksoddsandends.entity.Complaint;
+import com.nicksoddsandends.entity.Employee;
+
+public interface ComplaintService {
+    public long createComplaint(Complaint complaint);
 }
