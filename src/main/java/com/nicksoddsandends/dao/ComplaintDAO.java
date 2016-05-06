@@ -7,4 +7,5 @@ import com.nicksoddsandends.entity.Employee;
 
 public interface ComplaintDAO {
 	 public long createComplaint(Complaint complaint);
+	 public List<Complaint> getAllComplaintsByEmployee(Employee employee);
 }

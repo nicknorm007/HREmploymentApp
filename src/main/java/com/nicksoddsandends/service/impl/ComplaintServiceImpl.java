@@ -1,5 +1,7 @@
 package com.nicksoddsandends.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,5 +28,11 @@ public class ComplaintServiceImpl implements ComplaintService {
 	 public long createComplaint(Complaint complaint) {
 		 return complaintDAO.createComplaint(complaint);
 	 }
+
+	@Override
+	public List<Complaint> getAllComplaintsByEmployee(Employee employee) {
+		List<Complaint> complaints = complaintDAO.getAllComplaintsByEmployee(employee);
+		return complaints;
+	}
 
 }
