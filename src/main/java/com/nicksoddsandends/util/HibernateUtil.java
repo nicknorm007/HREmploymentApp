@@ -45,6 +45,11 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession().createSQLQuery(query).list();        
     }
     
+    @SuppressWarnings("rawtypes")
+    public <T> List fetchAllHql(String query) {        
+        return sessionFactory.getCurrentSession().createQuery(query).list();        
+    }
+    
     @SuppressWarnings("unchecked")
     public <T> T fetchById(Serializable id, Class<T> entityClass) {
         return (T)sessionFactory.getCurrentSession().get(entityClass, id);

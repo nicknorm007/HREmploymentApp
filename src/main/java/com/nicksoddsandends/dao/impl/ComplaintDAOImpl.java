@@ -1,5 +1,6 @@
 package com.nicksoddsandends.dao.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +31,13 @@ public class ComplaintDAOImpl implements ComplaintDAO {
 	@Override
 	public List<Complaint> getAllComplaintsByEmployee(Employee employee) {
 		List<Complaint> complaints = new ArrayList<Complaint>();
-		complaints = hibernateUtil.fetchAll("select c FROM Complaint c, Employee e"
+		List<Complaint> complaintObjects = hibernateUtil.fetchAllHql("select c from Complaint c, Employee e"
 				+ " WHERE c.complaint_id=e.emp_id");
+	
+		for(Complaint c: complaintObjects) {
+            complaints.add(c);
+        }
+		
 		return complaints;
 	}
 

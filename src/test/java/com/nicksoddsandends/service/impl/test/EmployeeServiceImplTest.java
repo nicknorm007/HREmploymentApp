@@ -26,6 +26,7 @@ public class EmployeeServiceImplTest {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	@Autowired
 	private ComplaintService complaintService;
 	
 	@Test  
@@ -64,12 +65,13 @@ public class EmployeeServiceImplTest {
 		emp.setComplaints(complaints);
 		
 		Long key = employeeService.createEmployee(emp);
-		
-		
 		Employee newEmp = employeeService.getEmployee(key);
-		//Hibernate.initialize(newEmp.getComplaints());
+		List<Complaint> complaintsByEmp = complaintService.getAllComplaintsByEmployee(newEmp);
 	
-		assertEquals(1,1);
+		Complaint c  = complaintsByEmp.get(0);
+		String text = c.getComplaint_text();
+		
+		assertEquals(true, text.equals("I want more vacation"));
 	}
 	
 
