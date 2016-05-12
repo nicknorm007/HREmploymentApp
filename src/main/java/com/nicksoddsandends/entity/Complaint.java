@@ -12,8 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "Complaints")
+//@Entity
+//@Table(name = "Complaints")
 public class Complaint implements Serializable {
 	
 	private static final long serialVersionUID = -7988799579036225137L;

@@ -9,7 +9,7 @@
        
     
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		    <class></class>
+		    <class>com.nicksoddsandends.entity.Employee</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
 			<property name="hibernate.archive.autodetection" value="class" />

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.nicksoddsandends.dao.ComplaintDAO;
 import com.nicksoddsandends.entity.Complaint;
 import com.nicksoddsandends.entity.Employee;
-import com.nicksoddsandends.util.HibernateUtil;
 
-@Repository
+
+/*@Repository
 public class ComplaintDAOImpl implements ComplaintDAO {
 
 	public ComplaintDAOImpl() {
@@ -43,3 +43,4 @@ public class ComplaintDAOImpl implements ComplaintDAO {
 
 
 }
+*/

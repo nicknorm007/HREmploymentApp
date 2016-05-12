@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.entitymanager.GenericEntityInterface;
 
 
@@ -13,13 +14,8 @@ import com.nicksoddsandends.entitymanager.GenericEntityInterface;
 public class GenericEntityImplementation<T> implements GenericEntityInterface<T>{
 	
 	protected EntityManager entityManager;
-	private Class<T> type;
-
+	
 	public GenericEntityImplementation() {
-	}
-
-	public GenericEntityImplementation(Class<T> type) {
-		this.type = type;
 	}
 	
 	public EntityManager getEntityManager() {
@@ -57,7 +53,7 @@ public class GenericEntityImplementation<T> implements GenericEntityInterface<T>
 	}
 	
 	@Override
-	public T find(Long id) {
+	public T find(Long id, Class<T> type) {
 		return (T) entityManager.find(type, id);
 	}
 }

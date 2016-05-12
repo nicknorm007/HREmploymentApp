@@ -73,6 +73,12 @@
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>org.hibernate</groupId>
+        	<artifactId>hibernate-entitymanager</artifactId>
+        	<version>4.3.6.Final</version>
+    	</dependency>
 
         <!--MYSQL Connector -->
         <dependency>

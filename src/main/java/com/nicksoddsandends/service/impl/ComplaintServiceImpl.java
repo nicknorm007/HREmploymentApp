@@ -12,7 +12,7 @@ import com.nicksoddsandends.entity.Complaint;
 import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.service.ComplaintService;
 
-@Service
+/*@Service
 @Transactional
 public class ComplaintServiceImpl implements ComplaintService {
 
@@ -36,3 +36,4 @@ public class ComplaintServiceImpl implements ComplaintService {
 	}
 
 }
+*/
