@@ -29,13 +29,6 @@ public class EmployeeServiceImplTest {
 	//@Autowired
 	//private ComplaintService complaintService;
 	
-	@Test  
-    public void testGetAllEmployees() {  
-     //List<Employee> emps = employeeService.getAllEmployees();
-       
-     //assertNotNull(emps);  
-    }  
-	
 	@Test
 	public void testCreateEmployee()
 	{
@@ -48,8 +41,21 @@ public class EmployeeServiceImplTest {
 		Employee newEmp = employeeService.getEmployee(e.getEmp_id());
 		
 		assertNotNull(newEmp);
-		//assertNotNull(newEmp.getEmp_id());   
+		assertNotNull(newEmp.getEmp_id());   
 	}
+	@Test  
+    public void testGetAllEmployees() { 
+		Employee emp = new Employee();
+		emp.setName("AllEmps");
+		emp.setAge(99);
+		emp.setSalary(100);
+		
+		Employee e = employeeService.createEmployee(emp);
+		List<Employee> emps = employeeService.getAllEmployees();
+		
+		assertEquals(true, emps.get(0).getName().length() > 0);
+      
+    }  
 	//@Test
 	/*public void testCreateEmployeeComplaint()
 	{

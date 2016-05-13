@@ -49,8 +49,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     
     @Override
     public List<Employee> getAllEmployees() {
-		return null;        
-        
+		List<Employee> emps = genericEntity.findAll(Employee.class);      
+        return emps;
     }
     
     @Override
