@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
@@ -70,5 +72,22 @@ public class GenericEntityImplementation<T> implements GenericEntityInterface<T>
 		List<T> entities = entityManager.createQuery(criteriaQuery).getResultList();
 		
 		return entities;
+	}
+	public List<T> findWhereColumnNameEquals(Class<T> type, String column, String value)
+	{
+		
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<T> criteriaQuery = builder.createQuery(type);
+		Root<T> entityRoot = criteriaQuery.from(type);
+		ParameterExpression<String> p = builder.parameter(String.class);
+		
+		criteriaQuery.select(entityRoot).where(builder.equal(entityRoot.get(column), p));
+		TypedQuery<T> query = entityManager.createQuery(criteriaQuery);
+		
+		query.setParameter(p, value);
+		List<T> results = query.getResultList();
+		
+		return results;
+		
 	}
 }

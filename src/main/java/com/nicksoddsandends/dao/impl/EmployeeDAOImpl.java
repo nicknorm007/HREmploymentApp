@@ -62,7 +62,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Employee> getAllEmployees(String employeeName) {
-		return null; 
+    	List<Employee> emps = genericEntity.findWhereColumnNameEquals(Employee.class, "name", employeeName);    
+        return emps; 
     	
     }
         

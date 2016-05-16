@@ -26,7 +26,7 @@ public class Employee implements Serializable {
 	private String name;
     private int age;
     private float salary;
-    //private Set<Complaint> complaints;  
+    private Set<Complaint> complaints;  
 
 	public Employee() {
     }
@@ -35,14 +35,14 @@ public class Employee implements Serializable {
     	this.name = name;
     }
     
-    /*@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     public Set<Complaint> getComplaints() {
 		return complaints;
 	}
 
 	public void setComplaints(Set<Complaint> complaints) {
 		this.complaints = complaints;
-	}*/
+	}
        
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

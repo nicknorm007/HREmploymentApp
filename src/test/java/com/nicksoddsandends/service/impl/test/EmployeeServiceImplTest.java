@@ -55,7 +55,20 @@ public class EmployeeServiceImplTest {
 		
 		assertEquals(true, emps.get(0).getName().length() > 0);
       
-    }  
+    }
+	@Test  
+    public void testGetAllEmployeesByName() { 
+		Employee emp = new Employee();
+		emp.setName("AllByName");
+		emp.setAge(99);
+		emp.setSalary(100);
+		
+		Employee e = employeeService.createEmployee(emp);
+		List<Employee> emps = employeeService.getAllEmployees("AllByName");
+		
+		assertEquals(true, emps.get(0).getName().equals("AllByName"));
+      
+    }
 	//@Test
 	/*public void testCreateEmployeeComplaint()
 	{

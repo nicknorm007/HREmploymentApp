@@ -8,4 +8,5 @@ public interface GenericEntityInterface<T> {
 	public T edit(T entity);
 	public T find(Long id, Class<T> type);
 	public List<T> findAll(Class<T> type);
+	public List<T> findWhereColumnNameEquals(Class<T> type, String column, String value);
 }
