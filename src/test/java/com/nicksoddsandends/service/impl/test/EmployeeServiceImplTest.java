@@ -26,8 +26,8 @@ public class EmployeeServiceImplTest {
 	
 	@Autowired
 	private EmployeeService employeeService;
-	//@Autowired
-	//private ComplaintService complaintService;
+	@Autowired
+	private ComplaintService complaintService;
 	
 	@Test
 	public void testCreateEmployee()
@@ -69,8 +69,8 @@ public class EmployeeServiceImplTest {
 		assertEquals(true, emps.get(0).getName().equals("AllByName"));
       
     }
-	//@Test
-	/*public void testCreateEmployeeComplaint()
+	@Test
+	public void testCreateEmployeeComplaint()
 	{
 		Employee emp = new Employee();
 		emp.setName("MikeCompl");
@@ -84,15 +84,15 @@ public class EmployeeServiceImplTest {
 		complaints.add(complaint);
 		emp.setComplaints(complaints);
 		
-		Long key = employeeService.createEmployee(emp);
-		Employee newEmp = employeeService.getEmployee(key);
+		Employee e = employeeService.createEmployee(emp);
+		Employee newEmp = employeeService.getEmployee(e.getEmp_id());
 		List<Complaint> complaintsByEmp = complaintService.getAllComplaintsByEmployee(newEmp);
 	
 		Complaint c  = complaintsByEmp.get(0);
 		String text = c.getComplaint_text();
 		
 		assertEquals(true, text.equals("I want more vacation"));
-	}*/
+	}
 	
 
 }

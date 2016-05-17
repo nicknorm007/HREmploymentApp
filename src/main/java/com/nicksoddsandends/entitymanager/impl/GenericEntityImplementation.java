@@ -7,14 +7,17 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.entitymanager.GenericEntityInterface;
+
 
 @Repository
 public class GenericEntityImplementation<T> implements GenericEntityInterface<T>{

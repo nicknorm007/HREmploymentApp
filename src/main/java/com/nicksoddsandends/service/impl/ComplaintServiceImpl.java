@@ -12,20 +12,20 @@ import com.nicksoddsandends.entity.Complaint;
 import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.service.ComplaintService;
 
-/*@Service
+@Service
 @Transactional
 public class ComplaintServiceImpl implements ComplaintService {
 
 	
 	 public ComplaintServiceImpl() {
-	        System.out.println("EmployeeServiceImpl()");
-	    }
+	        System.out.println("ComplaintServiceImpl()");
+	 }
 	    
 	 @Autowired
 	 private ComplaintDAO complaintDAO;
 
 	 @Override
-	 public long createComplaint(Complaint complaint) {
+	 public Complaint createComplaint(Complaint complaint) {
 		 return complaintDAO.createComplaint(complaint);
 	 }
 
@@ -36,4 +36,3 @@ public class ComplaintServiceImpl implements ComplaintService {
 	}
 
 }
-*/
