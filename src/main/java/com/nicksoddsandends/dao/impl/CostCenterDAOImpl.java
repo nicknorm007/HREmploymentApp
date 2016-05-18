@@ -3,12 +3,13 @@ package com.nicksoddsandends.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.nicksoddsandends.dao.CostCenterDAO;
 import com.nicksoddsandends.entity.CostCenter;
-import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.entitymanager.GenericEntityInterface;
 
+@Repository
 public class CostCenterDAOImpl implements CostCenterDAO {
 
 	@Autowired
