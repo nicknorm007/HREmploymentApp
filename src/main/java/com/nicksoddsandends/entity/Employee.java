@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +28,7 @@ public class Employee implements Serializable {
     private int age;
     private float salary;
     private Set<Complaint> complaints;  
+    private Set<CostCenter> costCenters;
 
 	public Employee() {
     }
@@ -75,7 +77,16 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
     
-    @Override
+    @ManyToMany(mappedBy = "employees")
+    public Set<CostCenter> getCostCenters() {
+		return costCenters;
+	}
+
+	public void setCostCenters(Set<CostCenter> costCenters) {
+		this.costCenters = costCenters;
+	}
+
+	@Override
     public String toString() {
         return "Employee{" +
                 "id=" + emp_id +

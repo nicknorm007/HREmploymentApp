@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nicksoddsandends.dao.CostCenterDAO;
 import com.nicksoddsandends.entity.CostCenter;
+import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.service.CostCenterService;
 
 @Service
@@ -53,6 +54,12 @@ public class CostCenterServiceImpl implements CostCenterService {
 	public List<CostCenter> getAllCostCenter(String costCenter) {
 		
 		return null;
+	}
+
+	@Override
+	public List<Employee> getAllEmployeesinCostCenter(CostCenter center) {
+		
+		return costCenterDAO.getAllEmployeesinCostCenter(center);
 	}
 
 }

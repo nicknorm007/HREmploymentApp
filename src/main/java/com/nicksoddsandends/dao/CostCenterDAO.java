@@ -13,5 +13,6 @@ public interface CostCenterDAO {
     public List<CostCenter> getAllCostCenters();
     public CostCenter getCostCenter(long id);   
     public List<CostCenter> getAllCostCenter(String costCenter);
+    public List<Employee> getAllEmployeesinCostCenter(CostCenter costCenter);
 
 }
