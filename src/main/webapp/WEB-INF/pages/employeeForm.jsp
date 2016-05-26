@@ -37,7 +37,7 @@ Employee Details
 <div class="form-group">
 <div class="control-label col-xs-3"> <form:label path="name" >Name</form:label> </div>
 <div class="col-xs-6">
-<form:hidden path="id" value="${employeeObject.emp_id}"/>
+<form:hidden path="emp_id" value="${employeeObject.emp_id}"/>
 <form:input cssClass="form-control" path="name" value="${employeeObject.name}"/>
 </div>
 </div>

@@ -48,6 +48,8 @@ public class CostCenterDAOImpl implements CostCenterDAO {
 
 	@Override
 	public void deleteCostCenter(long id) {
+		CostCenter c = (CostCenter) genericEntity.find(id, CostCenter.class);
+		genericEntity.delete(c);
 		
 	}
 

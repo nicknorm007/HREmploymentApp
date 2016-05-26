@@ -29,6 +29,9 @@ public class CostCenterServiceImplTest {
 	@Autowired
 	private CostCenterService costCenterService;
 	
+	@Autowired
+	private EmployeeService employeeService;
+	
 	@Test
 	public void testCostCenter()
 	{
@@ -63,6 +66,34 @@ public class CostCenterServiceImplTest {
 		CostCenter newCenter = costCenterService.getCostCenter(center.getCost_id());
 		
 		List<Employee> cEmps = costCenterService.getAllEmployeesinCostCenter(newCenter);
+		
+		assertNotNull(cEmps);
+		assertTrue("List has employee!", cEmps.get(0).getEmp_id() > 0);
+	}
+	@Test
+	public void testRemoveCostCenter()
+	{
+		Employee emp = new Employee();
+		emp.setName("NickCostRemove");
+		emp.setAge(55);
+		emp.setSalary(300);
+		
+		Set<Employee> emps = new HashSet<Employee>();
+		emps.add(emp);
+		
+		CostCenter center = new CostCenter();
+		center.setName("RemoveCostCenter");
+		center.setCreatedDate(LocalDate.of(2015, 12, 31));
+		
+		center.setEmployees(emps);
+		
+		CostCenter c = costCenterService.createCostCenter(center);
+		CostCenter newCenter = costCenterService.getCostCenter(center.getCost_id());
+		
+		costCenterService.deleteCostCenter(newCenter.getCost_id());
+		
+		//ensure employee is not deleted
+		List<Employee> cEmps = employeeService.getAllEmployees("NickCostRemove");
 		
 		assertNotNull(cEmps);
 		assertTrue("List has employee!", cEmps.get(0).getEmp_id() > 0);

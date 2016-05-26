@@ -36,14 +36,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     
     @Override
     public Employee updateEmployee(Employee employee) {
-		return employee;        
+		Employee emp = (Employee) genericEntity.edit(employee);
+		return emp;
         
     }
     
     @Override
-    public void deleteEmployee(long id) {
-        Employee employee = new Employee();
-        employee.setEmp_id(id);
+    public boolean deleteEmployee(long id) {
+    	Employee emp = (Employee) genericEntity.find(id, Employee.class);
+        return genericEntity.delete(emp);
         
     }
     

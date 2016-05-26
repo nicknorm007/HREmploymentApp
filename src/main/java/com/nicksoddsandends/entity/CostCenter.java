@@ -56,7 +56,7 @@ public class CostCenter implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE } )
     @JoinTable(name = "employee_center", joinColumns = @JoinColumn(name = "cost_id", referencedColumnName = "cost_id"), inverseJoinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "emp_id"))
 	public Set<Employee> getEmployees() {
 		return employees;
