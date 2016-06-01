@@ -2,7 +2,7 @@ package com.nicksoddsandends.dao.impl;
 
 import com.nicksoddsandends.dao.EmployeeDAO;
 import com.nicksoddsandends.entity.Employee;
-import com.nicksoddsandends.util.HibernateUtil;
+import com.nicksoddsandends.entitymanager.GenericEntityInterface;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,59 +19,53 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
     
-    public EmployeeDAOImpl() {
+	@Autowired
+	protected GenericEntityInterface<Employee> genericEntity;
+	
+	public EmployeeDAOImpl() {
         System.out.println("EmployeeDAOImpl");
     }
     
-    @Autowired
-    private HibernateUtil hibernateUtil;
-
+    
     @Override
-    public long createEmployee(Employee employee) {        
-        return (Long) hibernateUtil.create(employee);
+    public Employee createEmployee(Employee employee) {
+		Employee emp = (Employee) genericEntity.save(employee);  
+		return emp;
+        
     }
     
     @Override
-    public Employee updateEmployee(Employee employee) {        
-        return hibernateUtil.update(employee);
+    public Employee updateEmployee(Employee employee) {
+		Employee emp = (Employee) genericEntity.edit(employee);
+		return emp;
+        
     }
     
     @Override
-    public void deleteEmployee(long id) {
-        Employee employee = new Employee();
-        employee.setId(id);
-        hibernateUtil.delete(employee);
+    public boolean deleteEmployee(long id) {
+    	Employee emp = (Employee) genericEntity.find(id, Employee.class);
+        return genericEntity.delete(emp);
+        
     }
     
     @Override
-    public List<Employee> getAllEmployees() {        
-        return hibernateUtil.fetchAll(Employee.class);
+    public List<Employee> getAllEmployees() {
+		List<Employee> emps = genericEntity.findAll(Employee.class);      
+        return emps;
     }
     
     @Override
     public Employee getEmployee(long id) {
-        return hibernateUtil.fetchById(id, Employee.class);
+    	Employee emp = (Employee) genericEntity.find(id, Employee.class);
+		return emp;     
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Employee> getAllEmployees(String employeeName) { 
-        String query = "SELECT e.* FROM Employees e WHERE e.name like '%"+ employeeName +"%'";
-        List<Object[]> employeeObjects = hibernateUtil.fetchAll(query);
-        List<Employee> employees = new ArrayList<Employee>();
-        for(Object[] employeeObject: employeeObjects) {
-            Employee employee = new Employee();
-            long id = ((BigInteger) employeeObject[0]).longValue();         
-            int age = (int) employeeObject[1];
-            String name = (String) employeeObject[2];
-            float salary = (float) employeeObject[3];
-            employee.setId(id);
-            employee.setName(name);
-            employee.setAge(age);
-            employee.setSalary(salary);
-            employees.add(employee);
-        }
-        System.out.println(employees);
-        return employees;
+    public List<Employee> getAllEmployees(String employeeName) {
+    	List<Employee> emps = genericEntity.findWhereColumnNameEquals(Employee.class, "name", employeeName);    
+        return emps; 
+    	
     }
+        
 }

@@ -59,12 +59,12 @@ There are no Employees
 <tbody>
 <c:forEach items="${employeeList}" var="emp">
 <tr>
-<th><c:out value="${emp.id}"/></th>
+<th><c:out value="${emp.emp_id}"/></th>
 <th><c:out value="${emp.name}"/></th>
 <th><c:out value="${emp.age}"/></th>
 <th><c:out value="${emp.salary}"/></th> 
-<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Edit</a></th>
-<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Delete</a></th> 
+<th><a href="editEmployee?id=<c:out value='${emp.emp_id}'/>">Edit</a></th>
+<th><a href="deleteEmployee?id=<c:out value='${emp.emp_id}'/>">Delete</a></th> 
 </tr>
 </c:forEach>
 </tbody>

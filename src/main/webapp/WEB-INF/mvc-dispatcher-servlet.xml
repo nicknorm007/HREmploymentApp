@@ -27,39 +27,32 @@
     </bean>
 
     <!-- DataSource -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-        destroy-method="close">
-        <property name="driverClass" value="${database.driverClass}" />
-        <property name="jdbcUrl" value="${database.url}" />
-        <property name="user" value="${database.username}" />
-        <property name="password" value="${database.password}" />
-
-        <property name="acquireIncrement" value="${connection.acquireIncrement}" />
-        <property name="minPoolSize" value="${connection.minPoolSize}" />
-        <property name="maxPoolSize" value="${connection.maxPoolSize}" />
-        <property name="maxIdleTime" value="${connection.maxIdleTime}" />
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="${database.driverClassName}" />
+	    <property name="url" value="${database.url}" />
+	    <property name="username" value="${database.username}" />
+	    <property name="password" value="${database.password}" />
     </bean>
+    
+    <bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
+		<property name="dataSource" ref="dataSource" />
 
-    <!-- Hibernate SessionFactory -->
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
-                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-            </props>
-        </property>
-        <property name="packagesToScan" value="com.nicksoddsandends.entity"></property>
-    </bean>
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
 
     <!-- Transaction -->
-    <bean id="transactionManager"
-        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+   <bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

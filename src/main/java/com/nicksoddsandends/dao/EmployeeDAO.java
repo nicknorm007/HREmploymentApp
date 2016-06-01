@@ -5,13 +5,13 @@ import java.util.List;
 import com.nicksoddsandends.entity.Employee;
 
 /**
- * @author Ranga Reddy
+ * @author
  * @version 1.0
  */
 public interface EmployeeDAO {
-    public long createEmployee(Employee employee);
+    public Employee createEmployee(Employee employee);
     public Employee updateEmployee(Employee employee);
-    public void deleteEmployee(long id);
+    public boolean deleteEmployee(long id);
     public List<Employee> getAllEmployees();
     public Employee getEmployee(long id);   
     public List<Employee> getAllEmployees(String employeeName);
