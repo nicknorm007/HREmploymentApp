@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nicksoddsandends.dao.ComplaintDAO;
 import com.nicksoddsandends.entity.Complaint;
+import com.nicksoddsandends.entity.CostCenter;
 import com.nicksoddsandends.entity.Employee;
 import com.nicksoddsandends.entitymanager.GenericEntityInterface;
 
@@ -60,6 +61,18 @@ public class ComplaintDAOImpl implements ComplaintDAO {
 		
 		complaints = entityManager.createQuery(query).getResultList();
 		return complaints;
+	}
+
+	@Override
+	public Complaint getComplaint(long id) {
+		Complaint c = (Complaint) genericEntity.find(id, Complaint.class);
+		return c; 
+	}
+
+	@Override
+	public List<Complaint> findAllComplaints() {
+		List<Complaint> cmplts = genericEntity.findAll(Complaint.class);
+		return cmplts;
 	}
 
 

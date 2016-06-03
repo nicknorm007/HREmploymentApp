@@ -35,4 +35,14 @@ public class ComplaintServiceImpl implements ComplaintService {
 		return complaints;
 	}
 
+	@Override
+	public Complaint getComplaint(long id) {
+		return complaintDAO.getComplaint(id);
+	}
+
+	@Override
+	public List<Complaint> findAllComplaints() {
+		return complaintDAO.findAllComplaints();
+	}
+
 }

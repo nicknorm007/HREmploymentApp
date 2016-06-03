@@ -71,26 +71,20 @@ public class EmployeeServiceImplTest {
 	@Test
 	public void testCreateEmployeeComplaint()
 	{
+		
 		Employee emp = new Employee();
-		emp.setName("MikeCompl");
+		emp.setName("MikeTestThis");
 		emp.setAge(99);
 		emp.setSalary(100);
 		
-		Set<Complaint> complaints = new HashSet<Complaint>();
-		
-		Complaint complaint = new Complaint("I want more vacation");
+		Complaint complaint = new Complaint("I want joined vacation.");
 		complaint.setEmployee(emp);
-		complaints.add(complaint);
-		emp.setComplaints(complaints);
 		
-		Employee e = employeeService.createEmployee(emp);
-		Employee newEmp = employeeService.getEmployee(e.getEmp_id());
-		List<Complaint> complaintsByEmp = complaintService.getAllComplaintsByEmployee(newEmp);
-	
-		Complaint c  = complaintsByEmp.get(0);
-		String text = c.getComplaint_text();
+		Complaint c = complaintService.createComplaint(complaint);
 		
-		assertEquals(true, text.equals("I want more vacation"));
+		Complaint newComplaint = complaintService.getComplaint(c.getComplaint_id());
+		
+		assertEquals(true, newComplaint.getEmployee().getName().equals("MikeTestThis"));
 	}
 	
 
